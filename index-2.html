@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Prem Das — Independent AI Systems Engineer & Digital Product Builder.">
+<title>PREM DAS — AI Systems Engineer</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap');
+
+:root{
+  --bg:#070708; --panel:#101012; --panel2:#0d0d0f; --text:#f5f5f2;
+  --muted:#898990; --line:rgba(255,255,255,.10); --soft:rgba(255,255,255,.055);
+  --lime:#b8ff69; --cyan:#7be8ff; --violet:#a98cff;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:Manrope,Arial,sans-serif;overflow-x:hidden}
+body:before{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:99;opacity:.035;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.7'/%3E%3C/svg%3E")
+}
+a{text-decoration:none;color:inherit}
+button{font:inherit}
+.container{width:min(1240px,calc(100% - 48px));margin:auto}
+.mono{font-family:"DM Mono",monospace}
+.muted{color:var(--muted)}
+.grid-bg{position:fixed;inset:0;z-index:-2;opacity:.23;background:
+linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),
+linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
+background-size:72px 72px;mask-image:linear-gradient(to bottom,#000,transparent 90%)}
+.glow{position:fixed;z-index:-1;width:500px;height:500px;border-radius:50%;filter:blur(100px);opacity:.07;background:var(--lime);left:-250px;top:20%}
+
+/* Header */
+header{position:fixed;top:0;left:0;right:0;height:78px;z-index:50;background:rgba(7,7,8,.68);backdrop-filter:blur(22px);border-bottom:1px solid rgba(255,255,255,.07)}
+.nav{height:100%;display:flex;align-items:center;justify-content:space-between}
+.logo{display:flex;align-items:center;gap:12px;font-size:13px;font-weight:800;letter-spacing:.13em}
+.logo-mark{width:34px;height:34px;border:1px solid var(--line);border-radius:10px;display:grid;place-items:center;color:var(--lime);background:rgba(184,255,105,.04)}
+.nav-links{display:flex;gap:30px;font-size:12px;color:#aaaab1}
+.nav-links a{transition:.2s}.nav-links a:hover{color:#fff}
+.nav-btn{border:1px solid var(--line);padding:11px 16px;border-radius:999px;font-size:12px;background:var(--soft)}
+.menu{display:none;background:none;border:0;color:#fff;font-size:24px}
+
+/* Hero */
+.hero{min-height:100vh;padding:145px 0 90px;display:grid;grid-template-columns:1.12fr .88fr;align-items:center;gap:65px}
+.eyebrow{display:inline-flex;align-items:center;gap:9px;padding:8px 11px;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.025);font-size:10px;letter-spacing:.13em;color:#bdbdc4;text-transform:uppercase}
+.pulse{width:6px;height:6px;background:var(--lime);border-radius:50%;box-shadow:0 0 15px var(--lime)}
+.hero h1{font-size:clamp(64px,8.6vw,122px);line-height:.86;letter-spacing:-.075em;margin:28px 0}
+.hero h1 span{display:block}
+.hero h1 .accent{background:linear-gradient(100deg,#fff 5%,#d8d6ff 45%,var(--lime) 90%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero-desc{max-width:670px;color:#a0a0a8;font-size:17px;line-height:1.8}
+.hero-actions{display:flex;gap:11px;margin-top:32px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:14px 18px;border-radius:12px;border:1px solid var(--line);font-size:12px;transition:.25s}
+.btn:hover{transform:translateY(-3px);border-color:rgba(255,255,255,.25)}
+.btn-main{background:#f5f5f2;color:#080808;border-color:#f5f5f2;font-weight:800}
+.mini-proof{display:flex;gap:25px;margin-top:30px;color:#77777e;font-size:10px;letter-spacing:.06em;text-transform:uppercase}
+
+/* Portrait */
+.portrait-wrap{display:flex;justify-content:center}
+.portrait{
+  width:min(430px,80vw);aspect-ratio:4/5;border-radius:28px;position:relative;overflow:hidden;
+  border:1px solid rgba(255,255,255,.14);
+  background:linear-gradient(145deg,#171719,#0c0c0e);
+  box-shadow:0 30px 100px rgba(0,0,0,.5),0 0 70px rgba(184,255,105,.05);
+}
+.portrait img{width:100%;height:100%;object-fit:cover;display:block;filter:saturate(.9) contrast(1.04)}
+.placeholder{height:100%;display:grid;place-items:center;text-align:center;padding:40px;color:#66666e}
+.placeholder strong{display:block;color:#aaaab1;font-size:18px;margin-bottom:8px}
+.portrait:after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.58),transparent 50%);pointer-events:none}
+.portrait-label{position:absolute;bottom:20px;left:20px;right:20px;z-index:2;display:flex;justify-content:space-between;align-items:end}
+.portrait-label strong{font-size:17px}.portrait-label small{color:#aaa;font-size:9px}
+.corner{position:absolute;width:55px;height:55px;border-color:var(--lime);z-index:3}
+.c1{top:15px;left:15px;border-top:1px solid;border-left:1px solid}
+.c2{bottom:15px;right:15px;border-bottom:1px solid;border-right:1px solid}
+
+/* Sections */
+section{padding:120px 0}
+.section-top{display:flex;justify-content:space-between;align-items:end;gap:30px;margin-bottom:46px}
+.kicker{font-size:10px;color:var(--lime);letter-spacing:.2em;text-transform:uppercase;margin-bottom:14px}
+h2{font-size:clamp(40px,5.5vw,74px);line-height:.95;letter-spacing:-.06em}
+.section-top p{max-width:420px;color:var(--muted);font-size:13px;line-height:1.8}
+
+/* Numbers */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.stat{padding:28px 22px;border-right:1px solid var(--line)}.stat:last-child{border:0}
+.stat b{font-size:31px;letter-spacing:-.05em}.stat p{font-size:10px;color:#77777e;margin-top:7px;text-transform:uppercase;letter-spacing:.1em}
+
+/* Work */
+.work{display:grid;gap:18px}
+.project{border:1px solid var(--line);background:linear-gradient(145deg,rgba(255,255,255,.055),rgba(255,255,255,.018));border-radius:24px;overflow:hidden;display:grid;grid-template-columns:.92fr 1.08fr;min-height:430px;transition:.3s}
+.project:hover{border-color:rgba(255,255,255,.23);transform:translateY(-3px)}
+.project:nth-child(even){grid-template-columns:1.08fr .92fr}.project:nth-child(even) .project-visual{order:2}
+.project-visual{position:relative;min-height:330px;background:#0b0b0d;overflow:hidden}
+.visual-lines{position:absolute;inset:0;background:
+linear-gradient(90deg,transparent 49.8%,rgba(255,255,255,.07) 50%,transparent 50.2%),
+linear-gradient(transparent 49.8%,rgba(255,255,255,.07) 50%,transparent 50.2%);background-size:70px 70px}
+.network{position:absolute;inset:15%;display:grid;place-items:center}
+.network .core{width:105px;height:105px;border-radius:50%;display:grid;place-items:center;text-align:center;border:1px solid rgba(184,255,105,.45);box-shadow:0 0 60px rgba(184,255,105,.11);background:#0c100b;color:var(--lime);font:10px "DM Mono"}
+.node{position:absolute;padding:11px 13px;border:1px solid rgba(255,255,255,.12);background:rgba(8,8,10,.82);backdrop-filter:blur(10px);border-radius:9px;font:9px "DM Mono";color:#bfc0c5}
+.node.n1{top:0;left:8%}.node.n2{top:4%;right:2%}.node.n3{bottom:3%;left:0}.node.n4{bottom:0;right:4%}
+.line{position:absolute;height:1px;background:linear-gradient(90deg,transparent,rgba(184,255,105,.45),transparent);width:35%;animation:flow 2.5s linear infinite}
+.line.l1{top:35%;left:15%;transform:rotate(22deg)}.line.l2{top:35%;right:14%;transform:rotate(-22deg)}.line.l3{bottom:32%;left:17%;transform:rotate(-20deg)}.line.l4{bottom:30%;right:15%;transform:rotate(20deg)}
+@keyframes flow{50%{opacity:.2}100%{opacity:1}}
+.project-info{padding:52px;display:flex;flex-direction:column;justify-content:center}
+.project-tag{font:9px "DM Mono";color:var(--lime);letter-spacing:.16em;text-transform:uppercase}
+.project h3{font-size:42px;letter-spacing:-.055em;margin:13px 0 15px}
+.project-info p{max-width:560px;color:#8d8d95;font-size:13px;line-height:1.8}
+.tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:24px}.tags span{font:9px "DM Mono";padding:7px 9px;border:1px solid var(--line);border-radius:999px;color:#aaaab1}
+
+/* Capability cards */
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.card{min-height:240px;padding:28px;border:1px solid var(--line);border-radius:20px;background:var(--panel2);position:relative;overflow:hidden}
+.card:hover{background:#111114}
+.card-num{font:10px "DM Mono";color:#66666d}
+.card h3{font-size:20px;margin:42px 0 10px;letter-spacing:-.03em}.card p{font-size:12px;line-height:1.75;color:var(--muted)}
+.card:after{content:"";position:absolute;width:140px;height:140px;right:-70px;bottom:-80px;background:var(--lime);opacity:.06;filter:blur(35px);border-radius:50%}
+
+/* Process */
+.process{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--line)}
+.step{padding:28px;min-height:215px;border-right:1px solid var(--line)}.step:last-child{border:0}
+.step .num{font:10px "DM Mono";color:var(--lime)}.step h3{font-size:18px;margin:38px 0 10px}.step p{font-size:12px;color:var(--muted);line-height:1.7}
+
+/* About */
+.about{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center}
+.about-copy p{color:var(--muted);font-size:15px;line-height:1.9;margin-top:22px}
+.manifesto{border:1px solid var(--line);padding:35px;border-radius:22px;background:linear-gradient(145deg,rgba(255,255,255,.05),rgba(255,255,255,.015))}
+.manifesto .quote{font-size:31px;line-height:1.18;letter-spacing:-.045em}.manifesto small{display:block;color:#707077;margin-top:30px;font-size:10px}
+
+/* CTA */
+.cta{text-align:center;border-top:1px solid var(--line);padding:150px 0}
+.cta h2{max-width:900px;margin:auto}.cta p{max-width:520px;margin:22px auto 30px;color:var(--muted);font-size:13px;line-height:1.8}
+
+/* Footer */
+footer{padding:32px 0 50px;border-top:1px solid var(--line);display:flex;justify-content:space-between;color:#6e6e75;font-size:10px}
+.available{display:flex;gap:8px;align-items:center}.available i{width:6px;height:6px;background:var(--lime);border-radius:50%;box-shadow:0 0 10px var(--lime)}
+
+/* Mobile */
+@media(max-width:900px){
+  .nav-links,.nav-btn{display:none}.menu{display:block}
+  .hero{grid-template-columns:1fr;padding-top:120px;gap:50px}
+  .portrait-wrap{justify-content:flex-start}.portrait{width:min(390px,88vw)}
+  .stats{grid-template-columns:1fr 1fr}.stat:nth-child(2){border-right:0}
+  .stat:nth-child(-n+2){border-bottom:1px solid var(--line)}
+  .cards{grid-template-columns:1fr 1fr}.process{grid-template-columns:1fr 1fr}
+  .step:nth-child(2){border-right:0}.step:nth-child(-n+2){border-bottom:1px solid var(--line)}
+  .about{grid-template-columns:1fr}
+  .project,.project:nth-child(even){grid-template-columns:1fr}.project:nth-child(even) .project-visual{order:0}
+}
+@media(max-width:600px){
+  .container{width:min(100% - 32px,1240px)}
+  .hero h1{font-size:62px}.hero-desc{font-size:15px}
+  section{padding:85px 0}.section-top{display:block}.section-top p{margin-top:18px}
+  .stats,.cards,.process{grid-template-columns:1fr}
+  .stat,.stat:nth-child(2){border-right:0;border-bottom:1px solid var(--line)}
+  .stat:last-child{border-bottom:0}
+  .step,.step:nth-child(2){border-right:0;border-bottom:1px solid var(--line)}
+  .step:last-child{border-bottom:0}
+  .project-info{padding:30px}.project h3{font-size:34px}
+  footer{flex-direction:column;gap:15px}
+}
+</style>
+</head>
+<body>
+<div class="grid-bg"></div><div class="glow"></div>
+
+<header>
+  <nav class="nav container">
+    <a class="logo" href="#"><span class="logo-mark">P</span>PREM DAS</a>
+    <div class="nav-links">
+      <a href="#work">Work</a><a href="#capabilities">Capabilities</a><a href="#about">About</a><a href="#contact">Contact</a>
+    </div>
+    <a class="nav-btn" href="#contact">Start a Project ↗</a>
+    <button class="menu" aria-label="Menu">☰</button>
+  </nav>
+</header>
+
+<main>
+<section class="hero container">
+  <div>
+    <div class="eyebrow"><i class="pulse"></i> Independent AI Systems Engineer</div>
+    <h1><span>I build</span><span class="accent">digital systems.</span></h1>
+    <p class="hero-desc">
+      I design and engineer AI-powered products, automation systems and premium digital experiences —
+      turning complex ideas into clear, working software.
+    </p>
+    <div class="hero-actions">
+      <a class="btn btn-main" href="#work">Explore Selected Work ↘</a>
+      <a class="btn" href="#contact">Discuss a Project ↗</a>
+    </div>
+    <div class="mini-proof"><span>AI Systems</span><span>Full-Stack</span><span>Automation</span><span>Product Engineering</span></div>
+  </div>
+
+  <div class="portrait-wrap">
+    <div class="portrait">
+      <!-- =====================================================
+           YOUR PHOTO:
+           Put your image in the same folder and name it:
+           "prem.jpg"
+           Supported: .jpg / .jpeg / .png / .webp
+           Then replace the placeholder below with:
+           <img src="prem.jpg" alt="Prem Das">
+           ===================================================== -->
+      <div class="placeholder">
+        <div>
+          <strong>YOUR PORTRAIT</strong>
+          <span class="muted">Add <b>prem.jpg</b> beside index.html</span>
+        </div>
+      </div>
+      <div class="corner c1"></div><div class="corner c2"></div>
+      <div class="portrait-label"><div><strong>PREM DAS</strong><br><small>AI SYSTEMS ENGINEER</small></div><small class="mono">01 / 01</small></div>
+    </div>
+  </div>
+</section>
+
+<section class="container">
+  <div class="stats">
+    <div class="stat"><b>AI</b><p>Systems Engineering</p></div>
+    <div class="stat"><b>Full</b><p>Stack Development</p></div>
+    <div class="stat"><b>Agent</b><p>Architecture</p></div>
+    <div class="stat"><b>∞</b><p>Ideas → Products</p></div>
+  </div>
+</section>
+
+<section id="work" class="container">
+  <div class="section-top">
+    <div><div class="kicker">Selected Systems</div><h2>Work that<br>shows the thinking.</h2></div>
+    <p>These case studies are built around real technical directions and can be replaced with your strongest live demos, screenshots and repositories.</p>
+  </div>
+
+  <div class="work">
+    <article class="project">
+      <div class="project-visual">
+        <div class="visual-lines"></div><div class="network">
+          <span class="node n1">ORCHESTRATOR</span><span class="node n2">SPECIALIST AGENTS</span>
+          <span class="node n3">MEMORY</span><span class="node n4">TOOLS / APIs</span>
+          <i class="line l1"></i><i class="line l2"></i><i class="line l3"></i><i class="line l4"></i>
+          <div class="core">PREM<br>SWARM</div>
+        </div>
+      </div>
+      <div class="project-info">
+        <div class="project-tag">01 / Multi-Agent AI</div><h3>PREM SWARM AI</h3>
+        <p>A modular AI system built around orchestration, specialized agents, memory, tools and task execution. Designed to turn user intent into structured work.</p>
+        <div class="tags"><span>Python</span><span>Agents</span><span>Planner</span><span>Memory</span><span>Automation</span></div>
+      </div>
+    </article>
+
+    <article class="project">
+      <div class="project-visual">
+        <div class="visual-lines"></div><div class="network">
+          <span class="node n1">USER INTENT</span><span class="node n2">PLANNER</span>
+          <span class="node n3">EXECUTION</span><span class="node n4">RESULT</span>
+          <i class="line l1"></i><i class="line l2"></i><i class="line l3"></i><i class="line l4"></i>
+          <div class="core">NEXUS<br>CORE</div>
+        </div>
+      </div>
+      <div class="project-info">
+        <div class="project-tag">02 / Orchestration</div><h3>NEXUS</h3>
+        <p>An orchestration architecture that decomposes requests into plans, delegates work to specialized software agents and coordinates tool-assisted execution.</p>
+        <div class="tags"><span>Python</span><span>DAG Planning</span><span>Tools</span><span>Agents</span></div>
+      </div>
+    </article>
+
+    <article class="project">
+      <div class="project-visual">
+        <div class="visual-lines"></div><div class="network">
+          <span class="node n1">INTERFACE</span><span class="node n2">API</span>
+          <span class="node n3">DATABASE</span><span class="node n4">DEPLOYMENT</span>
+          <i class="line l1"></i><i class="line l2"></i><i class="line l3"></i><i class="line l4"></i>
+          <div class="core">PRODUCT<br>ENGINE</div>
+        </div>
+      </div>
+      <div class="project-info">
+        <div class="project-tag">03 / Full-Stack</div><h3>Digital Products</h3>
+        <p>Premium websites, dashboards and custom applications engineered around the client's actual business problem—not generic templates.</p>
+        <div class="tags"><span>Next.js</span><span>TypeScript</span><span>React</span><span>APIs</span><span>Backend</span></div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section id="capabilities" class="container">
+  <div class="section-top">
+    <div><div class="kicker">Capabilities</div><h2>Built for<br>complex ideas.</h2></div>
+    <p>From the first architecture sketch to the final interface, I focus on useful engineering and polished execution.</p>
+  </div>
+  <div class="cards">
+    <article class="card"><span class="card-num">01</span><h3>AI Engineering</h3><p>Agents, orchestration, memory, tool use, AI workflows and intelligent software systems.</p></article>
+    <article class="card"><span class="card-num">02</span><h3>Web Engineering</h3><p>Modern responsive websites and applications with strong UX, architecture and performance.</p></article>
+    <article class="card"><span class="card-num">03</span><h3>Automation</h3><p>Connect APIs, services and business processes to remove repetitive work.</p></article>
+    <article class="card"><span class="card-num">04</span><h3>Backend Systems</h3><p>APIs, data flows, business logic and service architecture for real applications.</p></article>
+    <article class="card"><span class="card-num">05</span><h3>Mobile Products</h3><p>Cross-platform app concepts and interfaces designed around practical user journeys.</p></article>
+    <article class="card"><span class="card-num">06</span><h3>Product Thinking</h3><p>Translate a vague idea into requirements, architecture, prototype and a shippable product.</p></article>
+  </div>
+</section>
+
+<section class="container">
+  <div class="section-top">
+    <div><div class="kicker">Process</div><h2>Think.<br>Engineer.<br>Ship.</h2></div>
+    <p>Good software starts with understanding the problem before choosing the technology.</p>
+  </div>
+  <div class="process">
+    <div class="step"><span class="num">01 / DISCOVER</span><h3>Understand</h3><p>Clarify the problem, users, requirements and success criteria.</p></div>
+    <div class="step"><span class="num">02 / ARCHITECT</span><h3>Design</h3><p>Map components, data flow, agents, APIs and technical boundaries.</p></div>
+    <div class="step"><span class="num">03 / BUILD</span><h3>Engineer</h3><p>Build the interface and underlying system with iterative testing.</p></div>
+    <div class="step"><span class="num">04 / SHIP</span><h3>Deliver</h3><p>Deploy, refine and hand over a product that can be used in the real world.</p></div>
+  </div>
+</section>
+
+<section id="about" class="container">
+  <div class="about">
+    <div class="about-copy">
+      <div class="kicker">About</div>
+      <h2>Curious by nature.<br>Technical by choice.</h2>
+      <p>
+        I'm Prem Das, an independent developer focused on AI systems, software architecture,
+        automation and digital products. I enjoy taking ambitious ideas and breaking them down
+        into systems that can actually be built.
+      </p>
+      <p>
+        This website is intentionally a working demonstration of that approach:
+        clear structure, technical thinking and a premium interface.
+      </p>
+    </div>
+    <div class="manifesto">
+      <div class="quote">“Don't just tell people what you can build. Give them something they can experience.”</div>
+      <small class="mono">PREM DAS / ENGINEERING PRINCIPLE</small>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="cta">
+  <div class="container">
+    <div class="kicker">Start a Conversation</div>
+    <h2>Have an idea worth<br><span class="accent">building?</span></h2>
+    <p>Send the problem, product idea or business requirement. Let's turn it into a clear technical direction.</p>
+    <div class="hero-actions" style="justify-content:center">
+      <!-- CHANGE THIS EMAIL -->
+      <a class="btn btn-main" href="mailto:your-email@example.com">Email Me ↗</a>
+      <!-- CHANGE THIS GITHUB URL -->
+      <a class="btn" href="https://github.com/" target="_blank" rel="noopener">View GitHub ↗</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="container">
+  <span>© 2026 PREM DAS — Independent AI Systems Engineer</span>
+  <span class="available"><i></i> Available for selected projects</span>
+</footer>
+
+<script>
+/* Small premium interaction: cursor-reactive glow */
+const glow=document.querySelector('.glow');
+window.addEventListener('pointermove',e=>{
+  glow.style.left=(e.clientX-250)+'px';
+  glow.style.top=(e.clientY-250)+'px';
+});
+</script>
+</body>
+</html>
